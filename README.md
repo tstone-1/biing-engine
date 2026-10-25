@@ -7,11 +7,29 @@ German/English desktop launcher and a browser trainer for editing live game valu
 Supported inputs are the German disk version 1.4 and the German and English GOG
 CD editions. No original game files are included.
 
-This is an experimental source release. It is playable, but it is not a claim of
+This is an experimental release. It is playable, but it is not a claim of
 complete parity with the original. Read [known differences and support limits](KNOWN-LIMITATIONS.md),
 especially before moving saves between this engine and the original game.
 
-## Start from source
+## Download and play
+
+The [0.1.0-rc.1 release candidate](https://github.com/tstone-1/biing-engine/releases/tag/v0.1.0-rc.1)
+includes ready-to-run apps. No Python, compiler or build tools are needed:
+
+- [Windows 11, x86-64](https://github.com/tstone-1/biing-engine/releases/download/v0.1.0-rc.1/Biing-0.1.0-rc.1-windows-x86_64-signed.zip): extract the complete ZIP and open `Biing/Biing.exe`. Signed and timestamped.
+- [macOS 27+, Apple silicon](https://github.com/tstone-1/biing-engine/releases/download/v0.1.0-rc.1/Biing-0.1.0-rc.1-macos-arm64-notarized.zip): extract the ZIP and open `Biing.app`. Developer ID signed, notarized and stapled.
+
+Choose **Add game files** or **Add game folder**, import your own copy, then click
+**Play**. For the trainer, choose **New trainer session** and **Start trainer**.
+Pause before editing values. Your original files stay unchanged and saves live
+outside the application.
+
+These are experimental downloads. Windows physical input/focus and first-launch
+click-through, trainer browser interaction, and MIDI/CD listening still need manual
+acceptance checks. Read the release notes and known limitations before testing.
+Checksums, matching source archives and dependency notices are provided.
+
+## Start from source (optional)
 
 Install the prerequisites once:
 
@@ -147,7 +165,7 @@ from its pinned upstream and combined with the included MSYS2 recipe and patches
 `--libiconv-source PATH` can supply the exact reviewed ZIP for an offline build.
 Changed runtime binaries require a reviewed update to `packaging/licenses/`.
 The recipe expects a Git checkout for its commit/source manifest. Packages bundle the engine, launcher and
-runtime, so players need neither a compiler nor Python. Current private package
+runtime, so players need neither a compiler nor Python. Current release-candidate package
 checks cover Apple silicon on macOS 27+ and Windows x86-64 on Windows 11. The
 default macOS build has an ad-hoc signature. Dependency notices and matching sources
 are included. Fresh standard-account import, save/load, update and reinstall retain

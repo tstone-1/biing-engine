@@ -37,12 +37,13 @@ rewind time or all consequences of that edit.
 
 ## Downloads and support
 
-The initial release is source-only. The desktop packaging recipe produces internal
-test builds with dependency notices and matching source archives. Fresh standard-account
-import, save/load, update and reinstall preserve saves on macOS and Windows. Native
-UI and audio acceptance remain incomplete. macOS packages require macOS 27+; the default
-build is ad-hoc signed. The separate signing tool prepares Developer ID/notarized copies;
-check each artifact's release report rather than assuming every test ZIP is notarized.
+The [0.1.0-rc.1 prerelease](https://github.com/tstone-1/biing-engine/releases/tag/v0.1.0-rc.1)
+provides signed Windows 11 x86-64 and notarized macOS 27+ Apple silicon apps, with
+dependency notices and matching source archives. Fresh standard-account import,
+save/load, update and reinstall preserve saves on both platforms. Native UI and audio
+acceptance remain incomplete as described above; these are experimental packages.
+The packaging recipe's default macOS build is only ad-hoc signed. Notarization applies
+to the explicitly labelled published archive, not every locally built test ZIP.
 
 Back up saves before testing a new version or using the trainer. Report reproducible
 problems through this repository's issues with edition, platform and revision.

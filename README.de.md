@@ -5,7 +5,25 @@ englische GOG-CD-Ausgabe. Dieses experimentelle Projekt enthält keine Originald
 Die [bekannten Unterschiede und Prüfgrenzen](KNOWN-LIMITATIONS.md) stehen auf Englisch
 zur Verfügung. Eine vollständige Gleichheit mit dem Original wird nicht versprochen.
 
-## Einmal vorbereiten
+## Herunterladen und spielen
+
+Die [Testversion 0.1.0-rc.1](https://github.com/tstone-1/biing-engine/releases/tag/v0.1.0-rc.1)
+enthält fertige Apps. Python, Compiler und Entwicklungswerkzeuge sind nicht nötig:
+
+- [Windows 11, x86-64](https://github.com/tstone-1/biing-engine/releases/download/v0.1.0-rc.1/Biing-0.1.0-rc.1-windows-x86_64-signed.zip): die gesamte ZIP-Datei entpacken und `Biing/Biing.exe` öffnen. Signiert und mit Zeitstempel versehen.
+- [macOS 27+, Apple Silicon](https://github.com/tstone-1/biing-engine/releases/download/v0.1.0-rc.1/Biing-0.1.0-rc.1-macos-arm64-notarized.zip): die ZIP-Datei entpacken und `Biing.app` öffnen. Signiert, notarisiert und mit Apple-Prüfticket versehen.
+
+**Spieldateien hinzufügen** oder **Spielordner hinzufügen** wählen, die eigene Kopie
+importieren und auf **Spielen** klicken. Für den Trainer **Neue Trainersitzung** und
+**Trainer starten** wählen. Vor Änderungen das Spiel pausieren. Originaldateien
+bleiben unverändert; Spielstände liegen außerhalb der App.
+
+Die Downloads sind experimentell. Manuelle Windows-Prüfungen für Eingabe, Fokus und
+Erststart, Trainerbedienung im Browser sowie MIDI/CD-Hörtests stehen noch aus.
+Prüfsummen, passende Quellcodearchive und Lizenzhinweise sind enthalten bzw. beim
+Download verfügbar.
+
+## Aus dem Quellcode starten (optional)
 
 - **macOS:** [Homebrew](https://brew.sh/) installieren, dann im Terminal
   `brew install cmake ninja sdl3 uv` ausführen.
@@ -39,7 +57,8 @@ Bei Baufehlern die Voraussetzungen und `build/startup.log` prüfen.
 
 ## Trainer starten und Fortschritt behalten
 
-Nach dem ersten erfolgreichen Bau:
+In der fertigen App genügt **Trainer starten**. Beim Start aus dem Quellcode nach
+dem ersten erfolgreichen Bau:
 
 ```sh
 uv run tools/biing_inspector.py --game ../game
