@@ -1,0 +1,183 @@
+"""Generate the engine's per-build tables (engine/src/editions_tables.h) from docs/editions.md.
+
+Usage:
+  python3 -I tools/engine_editions.py            write engine/src/editions_tables.h
+  python3 -I tools/engine_editions.py --check    exit 1 when the header differs from what the document gives
+  python3 -I tools/engine_editions.py --at <build> <hex disk offset> ...
+                                                 map disk offsets as the engine does (build: disk, de, en)
+
+The data are the measured tables of docs/editions.md: the segment maps of section 3.2 ("**German CD**" and
+"**English CD**" tables) and the build, table-start and routine tables of section 3.5. Nothing is read from the game
+files; the header records where each number comes from. The mapping functions here mirror engine/src/program.c
+(build_at, build_routine) so the tests can check the document's own tables against each other.
+"""
+import pathlib
+import re
+import sys
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DOC = ROOT / "docs" / "editions.md"
+OUT = ROOT / "engine" / "src" / "editions_tables.h"
+GOLF = 0xC0000001  # ROUTINE_CD_GOLF in program.h
+UNMAPPED = 0x80000000
+NOWHERE = 0xFFFFFFFF
+SEGMENT_HEADINGS = {"German CD": "**German CD** (base", "English CD": "**English CD** (base"}
+BUILD_KEYS = {"Disk version 1.4": "disk", "GOG German CD": "de", "GOG English CD": "en"}
+
+
+def hx(s: str) -> int:
+    return int(s.strip().strip("`").replace("0x", ""), 16)
+
+
+def table_rows(lines: list[str], start: int) -> list[list[str]]:
+    """Rows of the Markdown table that begins at or after line `start` (header and rule skipped)."""
+    i = start
+    while i < len(lines) and not lines[i].startswith("|"):
+        i += 1
+    rows = []
+    for line in lines[i + 2:]:
+        if not line.startswith("|"):
+            break
+        rows.append([c.strip() for c in line.strip().strip("|").split("|")])
+    return rows
+
+
+def find(lines: list[str], text: str, after: int = 0) -> int:
+    for i in range(after, len(lines)):
+        if lines[i].startswith(text):
+            return i
+    raise ValueError(f"docs/editions.md: no line starting with {text!r}")
+
+
+SEG = re.compile(r"^`([0-9A-F]+)`-`([0-9A-F]+)`$")
+
+
+def parse_segments(rows: list[list[str]]) -> list[tuple[int, int, int]]:
+    """(disk start, disk end, build start) for every row with a counterpart; 'differ' rows are skipped."""
+    out = []
+    for r in rows:
+        d, b = SEG.match(r[0]), SEG.match(r[1])
+        if not d:
+            raise ValueError(f"segment row not understood: {r}")
+        if not b:
+            if r[1] != "-":
+                raise ValueError(f"segment row not understood: {r}")
+            continue
+        ds, de, bs, be = (int(x, 16) for x in (*d.groups(), *b.groups()))
+        delta = int(r[2].replace("`", "").replace("+", ""), 16)
+        if bs - ds != delta or be - bs != de - ds:
+            raise ValueError(f"segment row inconsistent: {r}")
+        out.append((ds, de, bs))
+    return out
+
+
+def parse(text: str) -> dict:
+    lines = text.splitlines()
+    segs = {k: parse_segments(table_rows(lines, find(lines, h))) for k, h in SEGMENT_HEADINGS.items()}
+    sec = find(lines, "### 3.5 ")
+    builds = []
+    for r in table_rows(lines, find(lines, "| Build | File size", sec)):
+        key = BUILD_KEYS[r[0]]
+        builds.append({"key": key, "name": r[0], "size": int(r[1]), "crc": hx(r[2]), "base": hx(r[3]),
+                       "texts": r[4].strip("`"), "data": r[5].strip("`"),
+                       "segments": [] if r[6] == "identity" else segs[r[6]], "points": [], "routines": [],
+                       "heap": hx(r[7]) if len(r) > 7 else 0})
+    by_name = {b["name"]: b for b in builds}
+    m = re.search(r"Character map check: .*?`([0-9A-F]{8})`", text[text.index("### 3.5 "):])
+    charmap = int(m.group(1), 16)
+    for r in table_rows(lines, find(lines, "| Build | Disk | Build offset", sec)):
+        by_name[r[0]]["points"].append((hx(r[1]), hx(r[2]), r[3]))
+    for r in table_rows(lines, find(lines, "| Build | Build routine", sec)):
+        by_name[r[0]]["routines"].append((hx(r[1]), GOLF if r[2] == "golf" else hx(r[2]), r[3]))
+    return {"builds": builds, "charmap": charmap}
+
+
+def build_at(b: dict, disk: int) -> int:
+    if not b["segments"]:
+        return disk
+    for d, o, _ in b["points"]:
+        if d == disk:
+            return o
+    for s, e, o in b["segments"]:
+        if s <= disk < e:
+            return o + disk - s
+    return NOWHERE
+
+
+def build_routine(b: dict, at: int) -> int:
+    if not b["segments"]:
+        return at
+    for o, d, _ in b["routines"]:
+        if o == at:
+            return d
+    for s, e, o in b["segments"]:
+        if o <= at < o + e - s:
+            return s + at - o
+    return UNMAPPED | at
+
+
+def c_string(s: str) -> str:
+    return s.replace("\\", "\\\\").replace('"', '\\"').replace("*/", "* /")
+
+
+def generate(data: dict) -> str:
+    out = ["/* Generated by tools/engine_editions.py from docs/editions.md - do not edit; edit the document and run",
+           " *   python3 -I tools/engine_editions.py",
+           " * Measured data (2026-10-20): the segment maps of docs/editions.md section 3.2 (tools/biing_editions.py map",
+           " * <disk BIPRO.EXE> <CD BIPRO.EXE>), the build identities, heap shifts, table starts and routine entries of section 3.5.",
+           " * Included by program.c only. */", ""]
+    for b in data["builds"]:
+        k = b["key"]
+        if b["segments"]:
+            out.append(f"static const ProgramSegment SEGMENTS_{k.upper()}[] = {{ /* disk start, disk end, build start */")
+            out += [f"    {{0x{s:X}, 0x{e:X}, 0x{o:X}}}," for s, e, o in b["segments"]]
+            out.append("};")
+        if b["points"]:
+            out.append(f"static const ProgramPoint POINTS_{k.upper()}[] = {{ /* disk, build */")
+            out += [f"    {{0x{d:X}, 0x{o:X}}}, /* {c_string(n)} */" for d, o, n in b["points"]]
+            out.append("};")
+        if b["routines"]:
+            out.append(f"static const ProgramRoutine ROUTINES_{k.upper()}[] = {{ /* build, disk */")
+            out += [f"    {{0x{o:X}, {'ROUTINE_CD_GOLF' if d == GOLF else f'0x{d:X}'}}}, /* {c_string(n)} */"
+                    for o, d, n in b["routines"]]
+            out.append("};")
+        out.append("")
+
+    def arr(name: str, key: str, items: list) -> str:
+        return f"{name}_{key.upper()}, {len(items)}" if items else "NULL, 0"
+
+    out.append("const ProgramBuild PROGRAM_BUILDS[] = {")
+    for b in data["builds"]:
+        k = b["key"]
+        out.append(f'    {{"{c_string(b["name"])}", {b["size"]}u, 0x{b["crc"]:08X}u, 0x{b["base"]:X}u, "{b["texts"]}", '
+                   f'"{b["data"]}", 0x{data["charmap"]:08X}u,')
+        out.append(f'     {arr("SEGMENTS", k, b["segments"])}, {arr("POINTS", k, b["points"])}, '
+                   f'{arr("ROUTINES", k, b["routines"])}, 0x{b["heap"]:X}u}},')
+    out.append("};")
+    out.append(f"const int PROGRAM_BUILD_COUNT = {len(data['builds'])};")
+    return "\n".join(out) + "\n"
+
+
+def main(argv: list[str]) -> int:
+    data = parse(DOC.read_text(encoding="utf-8"))
+    if argv[:1] == ["--at"]:
+        b = {x["key"]: x for x in data["builds"]}[argv[1]]
+        for a in argv[2:]:
+            v = build_at(b, int(a, 16))
+            print(f"{int(a, 16):X} -> {'-' if v == NOWHERE else f'{v:X}'}")
+        return 0
+    text = generate(data)
+    if argv[:1] == ["--check"]:
+        if OUT.read_text(encoding="utf-8") != text:
+            print(f"[FAIL] {OUT.relative_to(ROOT)} is out of date: run python3 -I tools/engine_editions.py")
+            return 1
+        print("[OK] editions_tables.h matches docs/editions.md")
+        return 0
+    OUT.write_text(text, encoding="utf-8")
+    print(f"[OK] wrote {OUT.relative_to(ROOT)}: " + ", ".join(
+        f"{b['key']} {len(b['segments'])} segments" for b in data["builds"]))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

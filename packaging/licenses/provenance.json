@@ -1,0 +1,112 @@
+[
+  {
+    "file": "LICENSE.bzip2.txt",
+    "sha256": "1f38bbc7caacafd65169276d759c0d88c991b753b643ce35d0e45ea1971dd441",
+    "source": "https://astral-sh.github.io/mirror/files/bzip2-1.0.8.tar.gz"
+  },
+  {
+    "file": "LICENSE.expat.txt",
+    "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534",
+    "source": "https://github.com/libexpat/libexpat/releases/download/R_2_9_0/expat-2.9.0.tar.xz"
+  },
+  {
+    "file": "LICENSE.libffi.txt",
+    "sha256": "deaf3a42effb551a5b140fa9afefed183a27f1341c6d1bf430d106a5e6931fc0",
+    "source": "https://github.com/libffi/libffi/releases/download/v3.8.0/libffi-3.8.0.tar.gz"
+  },
+  {
+    "file": "LICENSE.mpdecimal.txt",
+    "sha256": "669512af7219f58be03a398766d7c9da11a3b3df9d3f05cb74c5ceca25c8da3b",
+    "source": "https://astral-sh.github.io/mirror/files/mpdecimal-4.0.0.tar.gz"
+  },
+  {
+    "file": "LICENSE.openssl-3.txt",
+    "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+    "source": "https://github.com/openssl/openssl/releases/download/openssl-3.5.9/openssl-3.5.9.tar.gz"
+  },
+  {
+    "file": "LICENSE.sqlite.txt",
+    "sha256": "38bef3d28b24f145ea293bd3b6eb4b20396982abc8303128fb493986ea5bc719",
+    "source": "https://www.sqlite.org/2026/sqlite-autoconf-3530100.tar.gz"
+  },
+  {
+    "file": "LICENSE.liblzma.txt",
+    "sha256": "9a4062de0a2c388a98cf35a35d348b62fa97c838a71c3c28ee1a2d7d0a565b02",
+    "source": "https://github.com/tukaani-project/xz/releases/download/v5.8.4/xz-5.8.4.tar.gz"
+  },
+  {
+    "file": "LICENSE.zstd.txt",
+    "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+    "source": "https://github.com/python/cpython-source-deps/archive/refs/tags/zstd-1.5.7.tar.gz"
+  },
+  {
+    "file": "Python-additional-licenses.txt",
+    "sha256": "f2aca7b699f158e9cea66091689de681706b44225b053415ec2aa19edb4655c5",
+    "source": "https://www.python.org/ftp/python/3.15.1/Python-3.15.1.tar.xz"
+  },
+  {
+    "file": "Windows-runtime-conditions.txt",
+    "sha256": "b97f5157bb1af5ceb8c40dc58825b2c9c16f94cdb2ff5823f0e746bbc8dfcb29",
+    "source": "https://www.python.org/ftp/python/3.15.1/Python-3.15.1.tar.xz"
+  },
+  {
+    "file": "HACL-notices.txt",
+    "sha256": "366cf78abeefa011b18ee6372528b2b62eb24c9c8ea9974380b8d752fbad159e",
+    "source": "https://www.python.org/ftp/python/3.15.1/Python-3.15.1.tar.xz"
+  },
+  {
+    "file": "Tcl-license.txt",
+    "sha256": "08abbc7c108e35c427a412729a80c104af05e1d40b6b83c2e0d384c124c85ada",
+    "source": "https://prdownloads.sourceforge.net/tcl/tcl9.0.4-src.tar.gz"
+  },
+  {
+    "file": "LibTomMath-license.txt",
+    "sha256": "8d6826c6435770d31fc9d705400b75dabb843e2add297ee1801afe7402370193",
+    "source": "https://prdownloads.sourceforge.net/tcl/tcl9.0.4-src.tar.gz"
+  },
+  {
+    "file": "Tcl-zlib-license.txt",
+    "sha256": "5949cf2b8b5933c15a35ee31936e73245a287ba56c9bdc1bf9cae0c6bce692ae",
+    "source": "https://prdownloads.sourceforge.net/tcl/tcl9.0.4-src.tar.gz"
+  },
+  {
+    "file": "Tk-license.txt",
+    "sha256": "affaec08c9a31e135c196c750d32d3b0f9bf779fc7799832075b0e266044d2f4",
+    "source": "https://prdownloads.sourceforge.net/tcl/tk9.0.4-src.tar.gz"
+  },
+  {
+    "file": "SDL3-license.txt",
+    "sha256": "1c040b8271b37e5076359f8fd54240e371114112924d2df81ef87c7d6a1dfdfd",
+    "source": "https://github.com/libsdl-org/SDL/releases/tag/release-3.4.18"
+  },
+  {
+    "file": "PyInstaller-license.txt",
+    "sha256": "0598064c7d2718e38d7914a7d08343b2fa008e3bea9ebba2aa7a6ffa5900dd64",
+    "source": "https://github.com/pyinstaller/pyinstaller/tree/v6.22.3"
+  },
+  {
+    "file": "MPL-2.0.txt",
+    "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+    "source": "https://www.mozilla.org/media/MPL/2.0/index.txt"
+  },
+  {
+    "file": "libiconv-LGPL-2.1.txt",
+    "sha256": "eb115b1eb84718b4f90ccca7f85285e970d09dfb383dc757242e510a50c3fa30",
+    "source": "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.19.tar.gz"
+  },
+  {
+    "file": "libiconv-GPL-3.0.txt",
+    "sha256": "3a73d2cb4e1c8dae7d3d46367d982e5bfd54cde9ab2a9532495cd944cc585617",
+    "source": "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.19.tar.gz"
+  },
+  {
+    "file": "libiconv-README.txt",
+    "sha256": "9d49adc147d066e4e71d3aa634deda4c96c27349075122931cfc25b6e9139d1a",
+    "source": "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.19.tar.gz"
+  },
+  {
+    "file": "public_suffix_list-source.txt",
+    "sha256": "6d5a41890175e65826f2a3532369925067d840e324631eb8b8008dc5f9ffebad",
+    "source": "https://prdownloads.sourceforge.net/tcl/tcl9.0.4-src.tar.gz (library/cookiejar/public_suffix_list.dat.gz, decompressed without content changes)"
+  }
+]

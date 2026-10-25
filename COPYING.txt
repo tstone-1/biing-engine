@@ -1,0 +1,17 @@
+Copyright (C) 2026 tstone-1
+
+The project's own source code is licensed under the GNU General Public License,
+version 3 only (SPDX-License-Identifier: GPL-3.0-only). See LICENSE for the full
+terms. This program is distributed without any warranty, including the implied
+warranties of merchantability or fitness for a particular purpose.
+
+This license covers only material for which the project holds the relevant rights.
+It does not license the original Biing! game, its executable files, graphics,
+texts, sound, music, manuals or other game content. Players must provide their
+own copy of the original game. No original game content is included in the
+source export or application packages.
+
+Third-party libraries and runtimes retain their own licenses and notices.
+Bundled application packages include a Notices directory. The current private
+test packages still require a complete third-party redistribution review before
+public distribution.

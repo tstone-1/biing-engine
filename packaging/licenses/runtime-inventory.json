@@ -1,0 +1,198 @@
+{
+  "Darwin": {
+    "libSDL3.0.dylib": {
+      "component": "SDL 3.4.18",
+      "sha256": [
+        "fddedf8f4b4e367edb771d7a257d7bd5b6e08bcb8eea825f9e387250a095f849"
+      ]
+    },
+    "libpython3.15.dylib": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "7cc09ab9af5d84aa97b8bc23439b6bace89ddf29cdbbaa716ac408cd00d15358"
+      ]
+    },
+    "libtcl9.0.dylib": {
+      "component": "Tcl/Tk 9.0.4",
+      "sha256": [
+        "ef55cded05e5128fe6888a1e43353d32539eec9b99c7d1bf90a3191b82f5510c"
+      ]
+    },
+    "libtcl9tk9.0.dylib": {
+      "component": "Tcl/Tk 9.0.4",
+      "sha256": [
+        "8719bccfe3358f8011c410e27516c520d97b33fcd5aecdd79c3fb047ef6e5fff"
+      ]
+    },
+    "_tkinter.cpython-315-darwin.so": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "d5d879bc10665647d8af1498e240a46c518b9c576e7d1e393570a1e9b05b7bdf"
+      ]
+    }
+  },
+  "Windows": {
+    "_bz2.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "e18c29c4b3863270b6a9f5c321e2c1c54c4d2e9cbbceb8727f3a10973a12fc64"
+      ]
+    },
+    "_ctypes.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "773b16e6f97ab65b1c634da424df9aa122a1a7dc64ad64afc3932ad3c9e6022c"
+      ]
+    },
+    "_decimal.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "2ac62ccc094584d86e02d7b56e040dc38b738cb813ef2f0154d475879567b912"
+      ]
+    },
+    "_hashlib.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "cd7a7d45b983907f5faef796cc7b8bd045da60939f79d9b39b365716806bc75c"
+      ]
+    },
+    "_lzma.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "eafda60217c486f3180fde88dfcbcd3966a938838b73db6818a9ad2046d0d10f"
+      ]
+    },
+    "_queue.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "dda27833dba026b820253a2ec110851d3926768775f5b2fb5fa6ad6a4263c680"
+      ]
+    },
+    "_socket.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "c67b608744304434a6012c27fe534bc2fb6220280f0d955ea354d1cb4293a550"
+      ]
+    },
+    "_ssl.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "dad289a728f758d90623ae4697ecdaf65947ee9a6cf50915673a039dfe8e2e17"
+      ]
+    },
+    "_tkinter.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "2710c5db574737cc611c92e0c73a0ceab465b3c83087168caa72117e4fbddbdc"
+      ]
+    },
+    "_uuid.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "8b66a59974309ad8af4ef73771a8602a3b683e5ee07e82526ddbfec41c6a9465"
+      ]
+    },
+    "_wmi.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "d2e1cfca1b29d628de46a92bf5a92629cb664c1d0e5296871c378cb0ec296484"
+      ]
+    },
+    "_zstd.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "14dc51f1979e580451432384686bb40f3d09dcbf632309f9233145965a4175af"
+      ]
+    },
+    "libiconv-2.dll": {
+      "component": "GNU libiconv 1.19-1 (MSYS2 CLANG64)",
+      "sha256": [
+        "c9f9b9addeac620eeccb6a23fc5a423fa1244e18431c00e1219db00d479ea332"
+      ]
+    },
+    "SDL3.dll": {
+      "component": "SDL 3.4.18",
+      "sha256": [
+        "0d21313c409ca959db6b15c07464ae61bed6c58462988e6008212099484ffdfd"
+      ]
+    },
+    "libcrypto-3-x64.dll": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "a3134ab8b09a4ed23a585e31bd638bfbba9c8bdc24c9880596d01aadfd4fa19b"
+      ]
+    },
+    "libffi-8.dll": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "cf8ce37c100bc4311d7b130a3d99d3ba37cc93a6a3eb72e9b80e76cf35ed5ba9"
+      ]
+    },
+    "libssl-3-x64.dll": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "00eb250eaeec502e5ac6a3cb9f0e07e2c772ca4d9258b2a62d80fbd452759179"
+      ]
+    },
+    "libtommath.dll": {
+      "component": "LibTomMath bundled with Tcl 9.0.4",
+      "sha256": [
+        "2d760fefb452665b6af8c8d9d29f3a8378f10fc0847cdd9938ea0cb5edf1d573"
+      ]
+    },
+    "pyexpat.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "e5ed13ccca1ecb3d25b6857ed8891925724ab18b78c23add93e08da1e5731fd6"
+      ]
+    },
+    "python315.dll": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "49b099f5e1ad9784b412cf502d054297ea6ebb5086405436a3dd1e2cb8b74f6d"
+      ]
+    },
+    "select.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "8927f59cfa829cf1deb7343b30129ed0c3c73024e1ccaef57ebe911bc72ed401"
+      ]
+    },
+    "tcl90.dll": {
+      "component": "Tcl/Tk 9.0.4",
+      "sha256": [
+        "a1fb45f963b05cb083a97df1449c2023b484eb921d40a463da7501b0f60e0f70"
+      ]
+    },
+    "tcl9tk90.dll": {
+      "component": "Tcl/Tk 9.0.4",
+      "sha256": [
+        "31f625c52e65d29d126e710ed8bab2ec964cb770e4fc59bc329dfff02cb6ddcf"
+      ]
+    },
+    "unicodedata.pyd": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "a3f8fa810a29b8ecc6920a7fda30a44f4dd2cc041eeb7ef20fe2bf7746c7fea7"
+      ]
+    },
+    "VCRUNTIME140.dll": {
+      "component": "Microsoft Visual C++ Runtime 14.51.36247.0",
+      "sha256": [
+        "d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7"
+      ]
+    },
+    "VCRUNTIME140_1.dll": {
+      "component": "Microsoft Visual C++ Runtime 14.51.36247.0",
+      "sha256": [
+        "a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e"
+      ]
+    },
+    "zlib1.dll": {
+      "component": "CPython 3.15.1 and its extension dependencies",
+      "sha256": [
+        "f07195206534ebb1fe75093d4ec6c54a7a9227281b0c09d2113465b71da9e900"
+      ]
+    }
+  }
+}

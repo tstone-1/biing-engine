@@ -1,0 +1,8 @@
+{
+  "libiconv": {
+    "sha256": "223a78b594d154cdf6ee1091a5bc333992e126020134c9010e3c8f75261b3d65",
+    "upstream": "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.19.tar.gz",
+    "recipe": "https://github.com/msys2/MINGW-packages/tree/045d46aedb9fdbd93b0900b1e20c1a6c73f23072/mingw-w64-libiconv",
+    "upstream_sha256": "88dd96a8c0464eca144fc791ae60cd31cd8ee78321e67397e25fc095c4a19aa6"
+  }
+}

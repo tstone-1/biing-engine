@@ -1,0 +1,5 @@
+# Source archives and checkout hashes must agree on every platform.
+* text=auto eol=lf
+# Preserve upstream bytes exactly for provenance and reproducible source bundles.
+packaging/licenses/** -text
+packaging/libiconv/** -text

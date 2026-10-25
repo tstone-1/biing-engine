@@ -1,0 +1,4 @@
+libiconv 1.19-1, MSYS2 CLANG64
+Recipe revision: 045d46aedb9fdbd93b0900b1e20c1a6c73f23072
+Original tarball plus all patches and PKGBUILD. Build in MSYS2 CLANG64 with makepkg-mingw.
+The application loads libiconv-2.dll dynamically; replacement with a compatible modified DLL is permitted.

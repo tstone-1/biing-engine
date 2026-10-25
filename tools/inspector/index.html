@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Biing! Inspector</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header><div><span class="eyebrow" data-i18n="LIVE COMPANION">LIVE COMPANION</span><h1>Biing! <span data-i18n="Inspector">Inspector</span></h1></div><label class="language"><span data-i18n="Language">Language</span> <select id="language"><option value="de">Deutsch</option><option value="en">English</option></select></label><span id="connection" class="pill" data-i18n="Connecting">Connecting</span></header>
+<section class="toolbar" aria-label="Simulation controls" data-i18n-aria="Simulation controls">
+ <button id="pause" class="primary" data-i18n="Pause">Pause</button><button id="step" disabled data-i18n="Step 1 frame">Step 1 frame</button>
+ <button id="second" disabled data-i18n="Step 1 second">Step 1 second</button><button id="checkpoint" disabled data-i18n="Save checkpoint">Save checkpoint</button>
+ <button id="undo" disabled data-i18n="Undo last edit">Undo last edit</button>
+</section>
+<section class="checkpoint-controls" aria-label="Checkpoint recovery" data-i18n-aria="Checkpoint recovery">
+ <label for="checkpoints" data-i18n="Saved checkpoints">Saved checkpoints</label>
+ <select id="checkpoints" disabled></select><button id="restore" disabled data-i18n="Restore checkpoint">Restore checkpoint</button>
+ <button id="folder" data-i18n="Open session folder">Open session folder</button>
+ <p class="hint" data-i18n="Restoring first saves a recovery checkpoint, then returns to the office paused. Undo history is cleared.">Restoring first saves a recovery checkpoint, then returns to the office paused. Undo history is cleared.</p>
+</section>
+<section class="metrics" aria-label="Live game state" data-i18n-aria="Live game state">
+ <div><span data-i18n="Game time">Game time</span><strong id="time">--</strong></div><div><span data-i18n="Player cash">Player cash</span><strong id="cash">--</strong></div>
+ <div><span data-i18n="Screen / tick">Screen / tick</span><strong id="screen">--</strong></div><div><span data-i18n="Applied edits">Applied edits</span><strong id="edits">0</strong></div>
+</section>
+<div id="message" role="status" data-i18n="Loading the live field catalogue...">Loading the live field catalogue...</div>
+<main>
+ <aside><label for="group" data-i18n="Explore">Explore</label><select id="group"></select>
+  <label for="hospital" data-i18n="Hospital">Hospital</label><select id="hospital"><option value="all" data-i18n="All hospitals">All hospitals</option><option value="-1" data-i18n="At home / applicants">At home / applicants</option></select>
+  <label for="search" data-i18n="Find a record">Find a record</label><input id="search" type="search" placeholder="Name or record number" data-i18n-placeholder="Name or record number">
+  <div class="list-head"><span id="count">0 records</span><button id="refresh" class="quiet" data-i18n="Refresh list">Refresh list</button></div>
+  <div id="records" role="list" aria-label="Game records" data-i18n-aria="Game records"></div>
+ </aside>
+ <article>
+  <div class="record-heading"><div><span id="category" class="eyebrow">HOSPITALS</span><h2 id="name" data-i18n="Select a record">Select a record</h2></div><span id="record-id" class="pill">--</span></div>
+  <div class="field-tools"><input id="field-search" type="search" placeholder="Find a field" data-i18n-placeholder="Find a field"><label><input id="editable" type="checkbox"><span data-i18n="Editable only">Editable only</span></label></div>
+  <p class="hint" data-i18n="Pause to edit. Changes take effect in live memory; the game may recalculate them when it resumes. Linked assignments and structural fields are read-only.">Pause to edit. Changes take effect in live memory; the game may recalculate them when it resumes. Linked assignments and structural fields are read-only.</p>
+  <table><thead><tr><th data-i18n="Field">Field</th><th data-i18n="Value">Value</th><th data-i18n="Edit">Edit</th></tr></thead><tbody id="fields"></tbody></table>
+  <details><summary data-i18n="Selected record bytes">Selected record bytes</summary><pre id="bytes"></pre><p id="source" class="hint"></p></details>
+  <details id="raw-panel"><summary data-i18n="All save blocks - read-only">All save blocks - read-only</summary><div class="raw-controls"><label><span data-i18n="Block">Block</span> <select id="block"></select></label><label><span data-i18n="Byte offset">Byte offset</span> <input id="offset" type="number" value="0" min="0" step="256"></label><button id="raw-read" data-i18n="Read 256 bytes">Read 256 bytes</button></div><pre id="raw"></pre></details>
+  <details id="history-panel"><summary data-i18n="Edit history">Edit history</summary><ol id="history"></ol></details>
+ </article>
+</main>
+<footer><span id="session" data-i18n="Owned test copy">Owned test copy</span><button id="stop" class="quiet" data-i18n="Stop session">Stop session</button></footer>
+<dialog id="edit-dialog"><form id="edit-form"><span class="eyebrow" data-i18n="LIVE VALUE">LIVE VALUE</span><h2 id="edit-title"></h2><p id="edit-range" class="hint"></p>
+ <label for="new-value" data-i18n="New value">New value</label><input id="new-value" type="number" step="1" required>
+ <p id="edit-error" role="alert"></p><div class="dialog-actions"><button type="button" id="cancel" data-i18n="Cancel">Cancel</button><button type="submit" class="primary" data-i18n="Apply change">Apply change</button></div>
+</form></dialog>
+</body></html>

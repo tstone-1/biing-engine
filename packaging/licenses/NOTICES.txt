@@ -1,0 +1,57 @@
+Biing engine and trainer - third-party notices
+
+The project's own code is GPL-3.0-only (Project-GPL-3.0.txt and Project-COPYING.txt).
+Sources/project-source.zip contains the matching project source and build scripts.
+The components below retain their respective licenses; GPL does not replace them.
+No original Biing game data is included.
+
+CPython 3.15.1, python-build-standalone 20261021
+  Python-LICENSE.txt contains the interpreter's license. Python-additional-licenses.txt
+  preserves CPython's full third-party notice collection, including mimalloc, decimal,
+  hashing, Unicode and compression notices. HACL-notices.txt preserves the vendored
+  HACL copyright/license headers. These sources are from Python 3.15.1.
+  https://www.python.org/ftp/python/3.15.1/Python-3.15.1.tar.xz
+  https://github.com/astral-sh/python-build-standalone/releases/tag/20261021
+
+Python runtime dependencies (linked into libpython on macOS or into extensions/DLLs
+on Windows): bzip2 1.0.8; Expat 2.9.0; libffi 3.8.0; mpdecimal 4.0.0;
+OpenSSL 3.5.9; XZ/liblzma 5.8.4; Zstandard 1.5.7. SQLite 3.53.1 is linked into
+the macOS interpreter. Their LICENSE.*.txt files preserve notices and license terms.
+macOS zlib, libedit, ncurses and Apple frameworks are supplied by the operating system.
+
+Tcl/Tk 9.0.4
+  Tcl-license.txt and Tk-license.txt preserve core, library and platform notices.
+  LibTomMath-license.txt and Tcl-zlib-license.txt cover the bundled support libraries.
+  The included public_suffix_list-source.txt is the corresponding unmodified source
+  of Tcl's compressed Public Suffix List. It is licensed under MPL 2.0 (MPL-2.0.txt).
+  https://www.tcl-lang.org/
+
+SDL 3.4.18
+  zlib license: SDL3-license.txt.
+  https://github.com/libsdl-org/SDL/releases/tag/release-3.4.18
+
+PyInstaller 6.22.3
+  PyInstaller-license.txt contains GPLv2-or-later with the bootloader exception,
+  and Apache 2.0 terms for runtime hooks. The unmodified bootloader is embedded in
+  the launcher. Build-time hook tooling itself is not included as an application.
+  https://github.com/pyinstaller/pyinstaller/tree/v6.22.3
+
+Windows only: GNU libiconv 1.19-1, MSYS2 CLANG64
+  Library: LGPL-2.1-or-later (libiconv-LGPL-2.1.txt); upstream documentation has
+  GPL terms (libiconv-GPL-3.0.txt). See libiconv-README.txt for the upstream scope.
+  Sources/libiconv-source.zip contains the original source archive, exact MSYS2
+  recipe and all applied patches. libiconv-2.dll is dynamically loaded and can be
+  replaced by a compatible modified library. Modification and reverse engineering
+  to debug such modifications are permitted under the LGPL.
+  https://www.gnu.org/software/libiconv/
+
+Windows only: Microsoft Visual C++ Runtime 14.51.36247.0
+  Microsoft Distributable Code retains its own terms and is not GPL-licensed.
+  Windows-runtime-conditions.txt preserves CPython's redistribution conditions.
+  These restrictions apply to the Microsoft runtime only, not the project's code.
+  https://learn.microsoft.com/visualstudio/releases/2022/redistribution
+
+provenance.json records notice origins and hashes. runtime-inventory.json identifies
+the exact reviewed native dependency bytes. Packaging refuses a changed or unknown
+runtime until its inventory and notices have been reviewed. OS libraries are not
+bundled. This inventory is not permission to publish a private test build.
